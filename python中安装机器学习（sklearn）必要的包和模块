@@ -1,0 +1,28 @@
+第一步：更新pip 
+
+python -m pip install --upgrade pip
+
+第二步：安装 scipy
+
+             在网址http://www.lfd.uci.edu/~gohlke/pythonlibs/ 中找到你需要的版本scipy
+
+             例如windows 64 位 Python2.7 对应下载:scipy-0.18.0-cp27-cp27m-win_amd64.whl
+
+             cd  下载scipy 目录下，安装
+
+             pip install scipy-0.18.0-cp27-cp27m-win_amd64.whl
+第三步： matplotlib
+
+pip install matplotlib
+
+第四步：安装numpy+mkl
+
+在网址http://www.lfd.uci.edu/~gohlke/pythonlibs/ 找到你需要的numpy+mkl版本
+
+然后 cd 到numpy+mkl所在的目录下，安装
+
+pip install  numpy-1.11.1+mkl-cp27-cp27m-win_amd64.whl
+
+第五步：sklearn ，机器学习包
+
+   pip install -U scikit-learn
