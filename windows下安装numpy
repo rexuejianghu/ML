@@ -1,0 +1,42 @@
+1.打开cmd
+
+2.下载与自己电脑版本相当的numpy包，例如我的电脑是python2.7，32位的，我下载的是numpy-1.10.4+vanilla-cp27-none-win32.whl
+下载地址是：http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy
+
+3.将下载好的文件放在python目录下的scrips文件夹下，我的是D:\python2.7\Scripts
+
+4.要确保你的path中有pip安装工具，如果没有，将下面的文件存为.py格式，并存在scrips文件夹下。如果有，可以跳过这步。可在cmd中输入pip help检测pip的有无。
+
+#!/usr/bin/env python
+import sys
+
+
+def main():
+    sys.exit(
+        "You're using an outdated location for the get-pip.py script, please "
+        "use the one available from https://bootstrap.pypa.io/get-pip.py"
+    )
+
+
+if __name__ == "__main__":
+    main()
+
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+    13
+
+5.右键计算机–属性–高级系统设置，打开高级中的环境变量，下面的系统变量中找到Path，在变量值处加入 ;D:\python2.7\Scripts （你的python中Scripts文件夹的位置），然后确定。
+
+6.在cmd中进入Scrips文件夹下，输入pip install ”numpy-1.10.4+vanilla-cp27-none-win32.whl” 安装完毕
+
+7.打开cmd，进入python，输入import numpy as np，如果没有报错，说明安装成功了。
