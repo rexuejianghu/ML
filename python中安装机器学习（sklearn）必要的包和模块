@@ -26,3 +26,5 @@ pip install  numpy-1.11.1+mkl-cp27-cp27m-win_amd64.whl
 第五步：sklearn ，机器学习包
 
    pip install -U scikit-learn
+   
+第六步:安装自然语言工具包：pip install nltk
