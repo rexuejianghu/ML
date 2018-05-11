@@ -1,1 +1,12 @@
 https://www.naftaliharris.com/blog/visualizing-k-means-clustering/
+k-means参数详解
+
+（1）对于K均值聚类，我们需要给定类别的个数n_cluster，默认值为8；
+（2）max_iter为迭代的次数，这里设置最大迭代次数为300；
+（3）n_init设为10意味着进行10次随机初始化，选择效果最好的一种来作为模型；
+（4） init=’k-means++’ 会由程序自动寻找合适的n_clusters；
+（5）tol：float形，默认值= 1e-4，与inertia结合来确定收敛条件；
+（6）n_jobs：指定计算所用的进程数；
+（7）verbose 参数设定打印求解过程的程度，值越大，细节打印越多；
+（8）copy_x：布尔型，默认值=True。当我们precomputing distances时，将数据中心化会得到更准确的结果。如果把此参数值设为True，则原始数据不会被改变。如果是False，则会直接在原始数据
+上做修改并在函数返回值时将其还原。但是在计算过程中由于有对数据均值的加减运算，所以数据返回后，原始数据和计算前可能会有细小差别。 
