@@ -10,3 +10,72 @@ k-means参数详解
 （7）verbose 参数设定打印求解过程的程度，值越大，细节打印越多；
 （8）copy_x：布尔型，默认值=True。当我们precomputing distances时，将数据中心化会得到更准确的结果。如果把此参数值设为True，则原始数据不会被改变。如果是False，则会直接在原始数据
 上做修改并在函数返回值时将其还原。但是在计算过程中由于有对数据均值的加减运算，所以数据返回后，原始数据和计算前可能会有细小差别。 
+
+
+
+
+
+
+
+
+
+
+
+参数：
+
+n_clusters：整形，缺省值=8
+
+生成的聚类数，即产生的质心（centroids）数。
+
+max_iter：整形，缺省值=300
+
+执行一次k-means算法所进行的最大迭代数。
+
+n_init：整形，缺省值=10
+
+用不同的质心初始化值运行算法的次数，最终解是在inertia意义下选出的最优结果。
+
+init：有三个可选值：'k-means++'， 'random'，或者传递一个ndarray向量。
+
+此参数指定初始化方法，默认值为 ‘k-means++’。
+
+‘k-means++’ 用一种特殊的方法选定初始质心从而能加速迭代过程的收敛
+
+，参见 k_init 的解释获取更多信息。
+
+‘random’ 随机从训练数据中选取初始质心。
+
+如果传递的是一个ndarray，则应该形如 (n_clusters, n_features) 并给出初始质心。
+
+precompute_distances：三个可选值，‘auto’，True 或者 False。
+
+预计算距离，计算速度更快但占用更多内存。
+
+‘auto’：如果 样本数乘以聚类数大于 12million 的话则不预计算距离。This corresponds to about 100MB overhead per job using double precision.
+
+True：总是预先计算距离。
+
+False：永远不预先计算距离。
+
+tol：float形，默认值= 1e-4
+
+与inertia结合来确定收敛条件。
+
+n_jobs：整形数。
+
+指定计算所用的进程数。内部原理是同时进行n_init指定次数的计算。
+
+若值为 -1，则用所有的CPU进行运算。若值为1，则不进行并行运算，这样的话方便调试。若值小于-1，则用到的CPU数为(n_cpus + 1 + n_jobs)。因此如果 n_jobs值为-2，则用到的CPU数为总CPU数减1。
+
+random_state：整形或 numpy.RandomState 类型，可选
+
+用于初始化质心的生成器（generator）。如果值为一个整数，则确定一个seed。此参数默认值为numpy的随机数生成器。
+
+verbose：整形，默认值=0
+
+Verbosity mode
+
+copy_x：布尔型，默认值=True
+
+当我们precomputing distances时，将数据中心化会得到更准确的结果。如果把此参数值设为True，则原始数据不会被改变。如果是False，则会直接在原始数据
+上做修改并在函数返回值时将其还原。但是在计算过程中由于有对数据均值的加减运算，所以数据返回后，原始数据和计算前可能会有细小差别。
