@@ -1,0 +1,230 @@
+矩阵求导公式总结
+2016年06月12日 15:40:53
+阅读数：10477
+今天推导公式，发现居然有对矩阵的求导，狂汗--完全不会。不过还好网上有人总结了。吼吼，赶紧搬过来收藏备份。
+
+基本公式：
+Y = A * X --> DY/DX = A'
+Y = X * A --> DY/DX = A
+Y = A' * X * B --> DY/DX = A * B'
+Y = A' * X' * B --> DY/DX = B * A'
+
+1. 矩阵Y对标量x求导：
+
+相当于每个元素求导数后转置一下，注意M×N矩阵求导后变成N×M了
+
+Y = [y(ij)] --> dY/dx = [dy(ji)/dx]
+
+2. 标量y对列向量X求导：
+
+注意与上面不同，这次括号内是求偏导，不转置，对N×1向量求导后还是N×1向量
+
+y = f(x1,x2,..,xn) --> dy/dX =(Dy/Dx1,Dy/Dx2,..,Dy/Dxn)'
+
+3. 行向量Y'对列向量X求导：
+
+注意1×M向量对N×1向量求导后是N×M矩阵。
+
+将Y的每一列对X求偏导，将各列构成一个矩阵。
+
+重要结论：
+
+dX'/dX = I
+
+d(AX)'/dX = A'
+
+4. 列向量Y对行向量X’求导：
+
+转化为行向量Y’对列向量X的导数，然后转置。
+
+注意M×1向量对1×N向量求导结果为M×N矩阵。
+
+dY/dX' = (dY'/dX)'
+
+5. 向量积对列向量X求导运算法则：
+
+注意与标量求导有点不同。
+
+d(UV')/dX = (dU/dX)V' + U(dV'/dX)
+
+d(U'V)/dX = (dU'/dX)V + (dV'/dX)U'
+
+重要结论：
+
+d(X'A)/dX = (dX'/dX)A + (dA/dX)X' = IA + 0X' = A
+
+d(AX)/dX' = (d(X'A')/dX)' = (A')' = A
+
+d(X'AX)/dX = (dX'/dX)AX + (d(AX)'/dX)X = AX + A'X
+
+6. 矩阵Y对列向量X求导：
+
+将Y对X的每一个分量求偏导，构成一个超向量。
+
+注意该向量的每一个元素都是一个矩阵。
+
+7. 矩阵积对列向量求导法则：
+
+d(uV)/dX = (du/dX)V + u(dV/dX)
+
+d(UV)/dX = (dU/dX)V + U(dV/dX)
+
+重要结论：
+
+d(X'A)/dX = (dX'/dX)A + X'(dA/dX) = IA + X'0 = A
+
+8. 标量y对矩阵X的导数：
+
+类似标量y对列向量X的导数，
+
+把y对每个X的元素求偏导，不用转置。
+
+dy/dX = [ Dy/Dx(ij) ]
+
+重要结论：
+
+y = U'XV = ΣΣu(i)x(ij)v(j) 于是 dy/dX = [u(i)v(j)] = UV'
+
+y = U'X'XU 则 dy/dX = 2XUU'
+
+y = (XU-V)'(XU-V) 则 dy/dX = d(U'X'XU - 2V'XU + V'V)/dX = 2XUU' -2VU' + 0 = 2(XU-V)U'
+
+9. 矩阵Y对矩阵X的导数：
+
+将Y的每个元素对X求导，然后排在一起形成超级矩阵。
+
+ 
+
+10.乘积的导数
+
+d(f*g)/dx=(df'/dx)g+(dg/dx)f'
+
+结论
+
+d(x'Ax)=(d(x'')/dx)Ax+(d(Ax)/dx)(x'')=Ax+A'x  （注意：''是表示两次转置）
+
+
+
+比较详细点的如下：
+
+
+ 矩阵求导公式【转】
+
+矩阵求导公式【转】
+
+矩阵求导公式【转】
+
+矩阵求导公式【转】
+
+矩阵求导公式【转】
+
+
+http://lzh21cen.blog.163.com/blog/static/145880136201051113615571/
+
+http://hi.baidu.com/wangwen926/blog/item/eb189bf6b0fb702b720eec94.html
+
+
+其他参考：
+
+ 
+Contents
+
+    Notation
+    Derivatives of Linear Products
+    Derivatives of Quadratic Products
+
+Notation
+
+    d/dx (y) isa vector whose (i) elementis dy(i)/dx
+    d/dx (y) is a vectorwhose (i) elementis dy/dx(i)
+    d/dx (yT)is a matrixwhose (i,j) elementis dy(j)/dx(i)
+    d/dx (Y) is a matrixwhose (i,j) elementis dy(i,j)/dx
+    d/dX (y) is a matrixwhose (i,j) elementis dy/dx(i,j)
+
+Note that the Hermitian transpose is not used because complexconjugates are not analytic.
+
+In the expressions below matrices andvectors A, B, C donot depend on X.
+Derivatives of Linear Products
+
+    d/dx (AYB) =A * d/dx (Y)* B
+        d/dx (Ay) =A * d/dx (y)
+    d/dx (xTA) =A
+        d/dx (xT) =I
+        d/dx (xTa) =d/dx (aTx)= a
+    d/dX (aTXb)= abT
+        d/dX (aTXa)= d/dX (aTXTa)= aaT
+    d/dX (aTXTb)= baT
+    d/dx (YZ) =Y * d/dx (Z)+ d/dx (Y) *Z
+
+Derivatives of Quadratic Products
+
+    d/dx (Ax+b)TC(Dx+e)= ATC(Dx+e) + DTCT(Ax+b)
+        d/dx (xTCx)= (C+CT)x
+            [C:symmetric]: d/dx (xTCx)= 2Cx
+            d/dx (xTx)= 2x
+        d/dx (Ax+b)T (Dx+e)= AT (Dx+e) + DT (Ax+b)
+            d/dx (Ax+b)T (Ax+b)= 2AT (Ax+b)
+        [C:symmetric]: d/dx (Ax+b)TC(Ax+b)= 2ATC(Ax+b)
+    d/dX (aTXTXb)= X(abT +baT)
+        d/dX (aTXTXa)= 2XaaT
+    d/dX (aTXTCXb)= CTXabT +CXbaT
+        d/dX (aTXTCXa)= (C +CT)XaaT
+        [C:Symmetric] d/dX (aTXTCXa)= 2CXaaT
+    d/dX ((Xa+b)TC(Xa+b))=(C+CT)(Xa+b)aT
+
+Derivatives of Cubic Products
+
+    d/dx (xTAxxT)=(A+AT)xxT+xTAxI
+
+Derivatives of Inverses
+
+    d/dx (Y-1)= -Y-1d/dx (Y)Y-1
+
+Derivative of Trace
+
+Note: matrix dimensions must result inan n*n argument fortr().
+
+    d/dX (tr(X))= I
+    d/dX (tr(Xk))=k(Xk-1)T
+    d/dX (tr(AXk))= SUMr=0:k-1(XrAXk-r-1)T
+    d/dX (tr(AX-1B))= -(X-1BAX-1)T
+        d/dX (tr(AX-1))=d/dX (tr(X-1A))= -X-TATX-T
+    d/dX (tr(ATXBT))= d/dX (tr(BXTA))= AB
+        d/dX (tr(XAT))= d/dX (tr(ATX))=d/dX (tr(XTA))= d/dX (tr(AXT)) =A
+    d/dX (tr(AXBXT))= ATXBT + AXB
+        d/dX (tr(XAXT))= X(A+AT)
+        d/dX (tr(XTAX))= XT(A+AT)
+        d/dX (tr(AXTX))= (A+AT)X
+    d/dX (tr(AXBX))= ATXTBT + BTXTAT
+    [C:symmetric] d/dX (tr((XTCX)-1A)= d/dX (tr(A(XTCX)-1)= -(CX(XTCX)-1)(A+AT)(XTCX)-1
+    [B,C:symmetric] d/dX (tr((XTCX)-1(XTBX))= d/dX (tr((XTBX)(XTCX)-1)= -2(CX(XTCX)-1)XTBX(XTCX)-1 +2BX(XTCX)-1
+
+Derivative of Determinant
+
+Note: matrix dimensions must result inan n*n argument fordet().
+
+    d/dX (det(X))= d/dX (det(XT))= det(X)*X-T
+        d/dX (det(AXB)) =det(AXB)*X-T
+        d/dX (ln(det(AXB)))= X-T
+    d/dX (det(Xk))= k*det(Xk)*X-T
+        d/dX (ln(det(Xk)))= kX-T
+    [Real] d/dX (det(XTCX))=det(XTCX)*(C+CT)X(XTCX)-1
+        [C: Real,Symmetric] d/dX (det(XTCX))= 2det(XTCX)*CX(XTCX)-1
+    [C: Real,Symmetricc] d/dX (ln(det(XTCX)))= 2CX(XTCX)-1
+
+Jacobian
+
+If y is a functionof x,then dyT/dx isthe Jacobian matrixof y with respectto x.
+
+Its determinant,|dyT/dx|, isthe Jacobian of y withrespect to x andrepresents the ratio of thehyper-volumes dy and dx.The Jacobian occurs when changing variables in an integration:Integral(f(y)dy)=Integral(f(y(x))|dyT/dx|dx).
+Hessian matrix
+
+If f is a functionof x then the symmetricmatrixd2f/dx2 = d/dxT(df/dx)is the Hessian matrix off(x). A valueof x for whichdf/dx = 0 correspondsto a minimum, maximum or saddle point according to whether theHessian is positive definite, negative definite or indefinite.
+
+    d2/dx2 (aTx)= 0
+    d2/dx2 (Ax+b)TC(Dx+e)= ATCD + DTCTA
+        d2/dx2 (xTCx)= C+CT
+            d2/dx2 (xTx)= 2I
+        d2/dx2 (Ax+b)T (Dx+e)= ATD + DTA
+            d2/dx2 (Ax+b)T (Ax+b)= 2ATA
+        [C:symmetric]: d2/dx2 (Ax+b)TC(Ax+b)= 2ATCA  
